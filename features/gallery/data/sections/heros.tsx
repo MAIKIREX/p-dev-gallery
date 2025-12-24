@@ -1455,19 +1455,19 @@ export function AgencyHeroXanderFloating() {
 },
 {
   id: "solt-uiux-brand-hero",
-  title: "UI/UX & Brand Designer Hero (Centered Photo)",
+  title: "UI/UX & Brand Designer Hero (Fixed + Code)",
   description:
-    "Hero editorial minimal con foto oval centrada, métricas a la derecha y fila de servicios inferior (responsive).",
+    "Hero editorial con foto oval centrada, métricas a la derecha y servicios abajo (sin corte del texto).",
   tags: ["hero", "portfolio", "minimal", "editorial", "typography", "responsive"],
+
   preview: (
     <div className="w-full max-w-6xl">
       <section className="relative overflow-hidden rounded-2xl border bg-[#d9d7cf] text-neutral-900 shadow-2xl">
         {/* TOP */}
         <div className="px-6 py-8 sm:px-10 sm:py-10">
-          {/* ✅ 3 columnas simétricas: left 1fr | center auto | right 1fr */}
-          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px_minmax(0,1fr)]">
             {/* LEFT */}
-            <div className="max-w-xl">
+            <div className="min-w-0 max-w-xl lg:pr-6">
               <p className="font-serif text-2xl text-neutral-800 sm:text-3xl">
                 Hey. I'm Solt,
               </p>
@@ -1483,8 +1483,8 @@ export function AgencyHeroXanderFloating() {
                   </div>
                 </div>
 
-                <div className="mt-2 text-6xl font-black uppercase sm:text-7xl">
-                  Designer
+                <div className="mt-2 text-6xl font-black uppercase sm:text-7xl lg:text-6xl xl:text-7xl">
+                  DESIGNER
                 </div>
               </div>
 
@@ -1503,24 +1503,26 @@ export function AgencyHeroXanderFloating() {
               </div>
             </div>
 
-            {/* CENTER (Imagen centrada real) */}
-            <div className="relative mx-auto w-full max-w-md lg:justify-self-center">
-              <div className="mx-auto w-[280px] overflow-hidden rounded-[999px] bg-neutral-200 shadow-lg sm:w-[340px]">
-                <img
-                  alt="portrait"
-                  className="h-[460px] w-full object-cover object-center sm:h-[520px]"
-                  // ✅ recomendado: usa local para que nunca se rompa
-                  // src="/heros/solt.jpg"
-                  // ✅ alternativa remota estable:
-                  src="https://images.unsplash.com/photo-1520975958221-0a0f2bb1a2c1?auto=format&fit=crop&w=1200&q=80"
-                />
-              </div>
+            {/* CENTER */}
+            <div className="relative flex justify-center">
+              <div className="relative">
+                <div className="pointer-events-none absolute left-1/2 top-0 h-[560px] w-[380px] -translate-x-1/2 rounded-[999px] bg-white/40" />
 
-              <div className="pointer-events-none absolute -bottom-4 left-1/2 h-10 w-[70%] -translate-x-1/2 rounded-full bg-neutral-900/10 blur-xl" />
+                <div className="relative mx-auto w-[340px] overflow-hidden rounded-[999px] bg-neutral-200 shadow-lg">
+                  <img
+                    alt="portrait"
+                    className="h-[560px] w-full object-cover object-center"
+                    // ✅ recomendado: crea public/heros/solt.jpg
+                    src="/heros/solt.jpg"
+                  />
+                </div>
+
+                <div className="pointer-events-none absolute -bottom-5 left-1/2 h-12 w-[70%] -translate-x-1/2 rounded-full bg-neutral-900/12 blur-xl" />
+              </div>
             </div>
 
-            {/* RIGHT (métricas) */}
-            <div className="flex justify-start lg:justify-self-end lg:justify-end">
+            {/* RIGHT */}
+            <div className="min-w-0 flex justify-start lg:justify-end">
               <div className="w-full max-w-xs space-y-10 text-right">
                 <div>
                   <div className="text-3xl font-extrabold">15+</div>
@@ -1577,7 +1579,10 @@ export function AgencyHeroXanderFloating() {
             ].map((item, idx) => (
               <div
                 key={item.title}
-                className={["px-0 lg:px-6", idx !== 0 ? "lg:border-l lg:border-neutral-900/15" : ""].join(" ")}
+                className={[
+                  "px-0 lg:px-6",
+                  idx !== 0 ? "lg:border-l lg:border-neutral-900/15" : "",
+                ].join(" ")}
               >
                 <div className="text-xs font-extrabold tracking-wide text-neutral-900">
                   {item.title}
@@ -1593,7 +1598,7 @@ export function AgencyHeroXanderFloating() {
     </div>
   ),
 
-  // Para la galería (mostrar código como string)
+  // ✅ ESTE es el "code" que tu galería necesita (string)
   code: `import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -1601,16 +1606,20 @@ export function SoltDesignerHero() {
   return (
     <section className="relative overflow-hidden rounded-2xl border bg-[#d9d7cf] text-neutral-900 shadow-2xl">
       <div className="px-6 py-8 sm:px-10 sm:py-10">
-        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
-          <div className="max-w-xl">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px_minmax(0,1fr)]">
+          <div className="min-w-0 max-w-xl lg:pr-6">
             <p className="font-serif text-2xl text-neutral-800 sm:text-3xl">Hey. I'm Solt,</p>
 
             <div className="mt-3 leading-[0.92] tracking-tight">
               <div className="text-5xl font-black uppercase sm:text-6xl">A UI/UX</div>
+
               <div className="mt-2 flex items-end gap-3">
                 <div className="font-serif text-5xl italic sm:text-6xl">&amp; Brand</div>
               </div>
-              <div className="mt-2 text-6xl font-black uppercase sm:text-7xl">Designer</div>
+
+              <div className="mt-2 text-6xl font-black uppercase sm:text-7xl lg:text-6xl xl:text-7xl">
+                DESIGNER
+              </div>
             </div>
 
             <p className="mt-6 max-w-md font-serif text-lg leading-relaxed text-neutral-700">
@@ -1628,18 +1637,23 @@ export function SoltDesignerHero() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-md lg:justify-self-center">
-            <div className="mx-auto w-[280px] overflow-hidden rounded-[999px] bg-neutral-200 shadow-lg sm:w-[340px]">
-              <img
-                alt="portrait"
-                className="h-[460px] w-full object-cover object-center sm:h-[520px]"
-                src="/heros/solt.jpg"
-              />
+          <div className="relative flex justify-center">
+            <div className="relative">
+              <div className="pointer-events-none absolute left-1/2 top-0 h-[560px] w-[380px] -translate-x-1/2 rounded-[999px] bg-white/40" />
+
+              <div className="relative mx-auto w-[340px] overflow-hidden rounded-[999px] bg-neutral-200 shadow-lg">
+                <img
+                  alt="portrait"
+                  className="h-[560px] w-full object-cover object-center"
+                  src="/heros/solt.jpg"
+                />
+              </div>
+
+              <div className="pointer-events-none absolute -bottom-5 left-1/2 h-12 w-[70%] -translate-x-1/2 rounded-full bg-neutral-900/12 blur-xl" />
             </div>
-            <div className="pointer-events-none absolute -bottom-4 left-1/2 h-10 w-[70%] -translate-x-1/2 rounded-full bg-neutral-900/10 blur-xl" />
           </div>
 
-          <div className="flex justify-start lg:justify-self-end lg:justify-end">
+          <div className="min-w-0 flex justify-start lg:justify-end">
             <div className="w-full max-w-xs space-y-10 text-right">
               <div>
                 <div className="text-3xl font-extrabold">15+</div>
